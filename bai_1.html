@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+<input type="number" id="numberInput" placeholder="Nhập số (1-50)">
+<button onclick="addNumber()">Thêm vào mảng</button>
+<button onclick="showArray()">Hiển thị mảng</button>
+<button onclick="calculateAverage()">Tính trung bình</button>
+
+<p id="message"></p>
+
+<script>
+    const array = [];
+
+    function addNumber() {
+        const inputNumber = parseInt(document.getElementById('numberInput').value);
+        if (array.length < 50) {
+            array.push(inputNumber);
+            document.getElementById('message').innerText = `Đã thêm số ${inputNumber} vào mảng.`;
+        } else {
+            alert('Mảng không được quá 50 phần tử.');
+        }
+    }
+
+    function showArray() {
+        if (array.length > 0) {
+            alert('Mảng hiện tại: ' + array.join(', '));
+        } else {
+            alert('Mảng rỗng.');
+        }
+    }
+    function calculateAverage() {
+        let sum = 0;
+        let count = 0;
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] % 3 === 0) {
+                count ++;
+                sum += array[i];
+            }
+        }
+        alert(`Trung bình cộng của ${count} số chia hết cho 3 là: ${sum/count}`);
+    }
+</script>
+</body>
+</html>

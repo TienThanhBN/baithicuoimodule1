@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+</head>
+<body>
+<input type="number" id="numberInput" placeholder="Nhập số nguyên dương">
+<button onclick="checkPerfectNumber()">Kiểm tra</button>
+<p id="result"></p>
+<script>
+
+    function isPerfectNumber(num) {
+        if (num <= 0 || !Number.isInteger(num)) {
+            return false;
+        }
+        let sum = 0;
+        for (let i = 1; i <= num / 2; i++) {
+            if (num % i === 0) {
+                sum += i;
+            }
+        }
+        return sum === num;
+    }
+
+    function checkPerfectNumber() {
+        const numberInput = document.getElementById('numberInput');
+        const number = parseInt(numberInput.value);
+        const isPerfect = isPerfectNumber(number);
+
+        if (isPerfect) {
+            alert(`Số ${number} là số hoàn hảo.`)
+        } else {
+            alert(`Số ${number} không phải là số hoàn hảo.`);
+        }
+    }
+</script>
+</body>
+</html>
